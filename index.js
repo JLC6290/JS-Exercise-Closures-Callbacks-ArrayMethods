@@ -243,9 +243,11 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
 */
 function tallyUpDonations(runners) {
   let total = 0;
-  total = runners.reduce(function(donation, currentValue){
-    return donation + currentValue
+  total = runners.reduce(function(accumulator, currentValue){ // Here currentValue is the object that reduce's callback function checks
+    console.log(currentValue.donation);
+    return accumulator + currentValue.donation // currentValue needs to be told which property to pull the value from
   }, 0);
+  console.log(total);
   return total;
 }
 
