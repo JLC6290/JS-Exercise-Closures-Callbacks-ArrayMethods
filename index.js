@@ -225,9 +225,8 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  let runnerSizes = runners.map(function(runner) {
-    if (runners.shirt_size === tShirtSize)
-      return runner
+  let runnerSizes = runners.filter(function(runner) { // tried first with .map, need to learn the difference and how they work
+    return runner.shirt_size == tShirtSize
   })
   return runnerSizes
 }
@@ -268,12 +267,11 @@ function tallyUpDonations(runners) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  var count = -1;
-  function counter() {
-    count++;
+  var count = 0;
+  return function counter() {
+    return count++; // <--- I forgot to return from the function. This apparently needs to be done despite the function being invoked in the return statement.
+    console.log(count);
   }
-  return counter();
-  // BROKEN CODE ENDS
 }
 
 /**
@@ -296,8 +294,16 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit() {
+  var count = 0;
+  return function counter(maxValue) {
+    if(count == maxValue){
+      count = 0;
+      return count;
+    }
+    console.log(count);
+    return count++;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
