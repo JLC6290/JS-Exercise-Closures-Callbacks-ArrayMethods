@@ -195,7 +195,7 @@ function getFullNames(runners) {
  * ### Challenge `firstNamesAllCaps`
  * 
  * @instructions
- * The event director needs to have all the runners' first names 
+ * The event director needs to have all the runners' first names
  * in uppercase because the director BECAME DRUNK WITH POWER.
  * Implement this function using map().
  * 
@@ -205,8 +205,8 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
   let allCaps = [];
-  runners.forEach(function(name) {
-    allCaps.push(`${name.first_name.toUpperCase}`);
+  runners.map(function(name) {
+    allCaps.push(`${name.first_name.toUpperCase()}`);
   })
   return allCaps;
 }
@@ -244,10 +244,8 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
 function tallyUpDonations(runners) {
   let total = 0;
   total = runners.reduce(function(accumulator, currentValue){ // Here currentValue is the object that reduce's callback function checks
-    console.log(currentValue.donation);
     return accumulator + currentValue.donation // currentValue needs to be told which property to pull the value from
   }, 0);
-  console.log(total);
   return total;
 }
 
@@ -296,15 +294,17 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit() {
-  var count = 0;
-  return function counter(maxValue) {
-    if(count == maxValue){
-      count = 0;
-      return count;
+function counterMakerWithLimit(maxValue) {
+  let count = -1;
+  return function counter() {
+    if(count === maxValue){
+      count = -1;
+      // return ++count;
     }
-    console.log(count);
-    return count++;
+    // else
+      console.log(count);
+      return ++count;
+  
   }
 }
 
