@@ -184,12 +184,16 @@ function processDuplicateFree(list, callback) {
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
+  
   let fullNames = [];
-  runners.forEach(function(name) {
-    fullNames.push(`${name.last_name}, ${name.first_name}`);
+  runners.forEach(function(runner) {
+    fullNames.push(`${runner.last_name}, ${runner.first_name}`);
   })
   return fullNames;
 }
+// const name = 'don'\'t';
+// const name = `don`;
+// const name = /don't/i
 
 /**
  * ### Challenge `firstNamesAllCaps`
@@ -205,10 +209,9 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
   let allCaps = [];
-  runners.map(function(name) {
-    allCaps.push(`${name.first_name.toUpperCase()}`);
+  return allCaps = runners.map(function(runner) {
+    return /*allCaps.push(`${*/runner.first_name.toUpperCase()/*}`);*/
   })
-  return allCaps;
 }
 
 /**
